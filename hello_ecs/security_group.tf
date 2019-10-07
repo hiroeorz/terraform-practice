@@ -29,3 +29,11 @@ module "nginx_sg" {
   port = 80
   cidr_blocks = [aws_vpc.example.cidr_block]
 }
+
+module "ssh_sg" {
+  source = "./security_group"
+  name = "ssh-sg"
+  vpc_id = aws_vpc.example.id
+  port = 22
+  cidr_blocks = ["0.0.0.0/0"]
+}
