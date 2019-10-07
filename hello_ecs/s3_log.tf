@@ -8,4 +8,6 @@ resource "aws_s3_bucket" "alb_log" {
       days = "180"
     }
   }
+
+  force_destroy = true # false if protection from delete.
 }

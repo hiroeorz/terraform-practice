@@ -3,7 +3,6 @@ resource "aws_lb" "example" {
   load_balancer_type = "application"
   internal = false
   idle_timeout = 60
-  enable_deletion_protection = true
   subnets = [ aws_subnet.public_0.id, aws_subnet.public_1.id]
 
   access_logs {
@@ -16,6 +15,8 @@ resource "aws_lb" "example" {
     module.https_sg.security_group_id, 
     module.http_redirect_sg.security_group_id,
   ]
+
+  enable_deletion_protection = false # delete protection
 }
 
 output "alb_dns_name" {
